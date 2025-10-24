@@ -6,11 +6,11 @@ export const CallGPT = async () => {
       Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
     },
     body: JSON.stringify({
-      model: "gpt-4.1",
-      input: "Write a one-sentence bedtime story about a unicorn.",
+      model: "gpt-4o",
+      input: [{ role: "user", content: "안녕" }],
     }),
   });
 
   const responseData = await response.json();
-  console.log(responseData);
+  return responseData.output[0].content[0].text;
 };
